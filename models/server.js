@@ -1,13 +1,15 @@
 const express = require("express")
 const userRouter = require("../routes/users")
+const catsRouter = require("../routes/cats")
 
 class Server {
 
     constructor() {
         this.app = express()
-        this.port = 8080
+        this.port = process.env.PORT
 
         this.usersPath = "/api/users"
+        this.catsPath = "/api/cats"
 
         this.middlewares()
         this.routes()
@@ -19,6 +21,7 @@ class Server {
 
     routes() {
         this.app.use(this.usersPath, userRouter)
+        this.app.use(this.catsPath, catsRouter)
     }
 
     listen() {
