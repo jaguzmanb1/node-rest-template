@@ -1,5 +1,6 @@
 
 const catsGet = (req, res) => {
+    console.log(req.info)
     res.status(200).send({"msg": "GET en cats"})
 }
 
