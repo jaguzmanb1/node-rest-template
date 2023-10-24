@@ -1,7 +1,7 @@
 const User = require("../models/users")
 
 const usuariosGet = async(req, res) => {
-    const usuarios = await User.find() 
+    const usuarios = await User.find({}, {name:1}) 
 
     res.status(200).json(usuarios)
 }
