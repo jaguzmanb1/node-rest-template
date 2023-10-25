@@ -26,7 +26,10 @@ class Server {
     }
 
     routes() {
+        // /api/users
         this.app.use(this.usersPath, userRouter)
+
+        // /api/cats
         this.app.use(this.catsPath, catsRouter)
     }
 

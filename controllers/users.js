@@ -1,15 +1,28 @@
 const User = require("../models/users")
 
 const usuariosGet = async(req, res) => {
-    const usuarios = await User.find({}, {name:1}) 
+    const usuarios = await User.find({}, {name:1, _id:0})
 
     res.status(200).json(usuarios)
 }
 
 const usuariosPost = async(req, res) => {
-    const { name, age, email, phoneNumber, password, hasPets } = req.body
+    const { 
+        name, 
+        age, 
+        email, 
+        phoneNumber, 
+        password, 
+        hasPets,
+    } = req.body
+
     const user = new User({
-        name: name, age, email, phoneNumber, password, hasPets
+        name, 
+        age, 
+        email, 
+        phoneNumber, 
+        password, 
+        hasPets,
     })
 
     await user.save()
